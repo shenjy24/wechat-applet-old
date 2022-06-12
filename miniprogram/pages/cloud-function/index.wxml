@@ -1,0 +1,8 @@
+<!--pages/cloud-function/index.wxml-->
+<text class="title">总和：{{sum}}</text>
+<button bindtap="add">累加</button>
+
+<text wx:for="{{items}}" wx:key="item">
+    {{index}}、 {{item}}
+</text>
+<button bindtap="request">调用</button>
