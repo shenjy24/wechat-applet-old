@@ -8,20 +8,30 @@ Page({
 
     },
 
-    login(event) {
-        console.log("login:" + event)
+    login() {
         wx.login({
-          timeout: 2000,
-          success(res) {
-            if(res.code) {
-                console.log("success:" + res.code)
-            } else {
-                console.log('登录失败！' + res.errMsg)
+            timeout: 2000,
+            success(res) {
+                if (res.code) {
+                    console.log("success:" + res.code)
+                } else {
+                    console.log('登录失败！' + res.errMsg)
+                }
+            },
+            complete(res) {
+                console.log("complete:" + JSON.stringify(res))
             }
-          },
-          complete(res) {
-              console.log("complete:" + JSON.stringify(res))
-          }
+        })
+    },
+
+    checkSession() {
+        wx.checkSession({
+            success: (res) => {
+                console.log("session有效")
+            },
+            fail: (res) => {
+                this.login()
+            },
         })
     },
 
