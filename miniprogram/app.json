@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/login/index",
         "pages/cloud-function/index"
     ],
     "window": {

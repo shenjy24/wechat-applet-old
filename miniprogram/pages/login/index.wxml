@@ -1,0 +1,2 @@
+<!--pages/login/index.wxml-->
+<button bindtap="login">登录</button>
