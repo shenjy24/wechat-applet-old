@@ -10,10 +10,19 @@ Page({
 
     login() {
         wx.login({
-            timeout: 2000,
+            timeout: 5000,
             success(res) {
                 if (res.code) {
                     console.log("success:" + res.code)
+                    wx.request({
+                        url: 'http://localhost:18080/auth/code2session',
+                        data: {
+                            code: res.code
+                          },
+                        success(r) {
+                            console.log("code2session:" + JSON.stringify(r))
+                        }
+                    });
                 } else {
                     console.log('登录失败！' + res.errMsg)
                 }
