@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/user/index",
         "pages/login/index",
         "pages/cloud-function/index"
     ],

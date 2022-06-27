@@ -38,9 +38,5 @@ Page({
                 this.login()
             },
         })
-    },
-
-    getUserInfo() {
-
-    },
+    }
 })
