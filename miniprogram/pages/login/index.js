@@ -39,35 +39,23 @@ Page({
     },
 
     getUserProfile() {
-        wx.getStorage({
-            key: 'openid',
-            encrypt: true,
-            success: (res1) => {
-                wx.getUserProfile({
-                    lang: 'zh_CN',
-                    desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-                    success: (res2) => {
-                        console.log(res2)
-                        wx.request({
-                            url: 'http://localhost:18080/auth/decryptUserProfile',
-                            data: {
-                                openid: res1.data,
-                                rawData: res2.rawData,
-                                signature: res2.signature,
-                                encryptedData: res2.encryptedData,
-                                iv: res2.iv
-                            },
-                            success: (res3) => {
-                                console.log("decryptUserProfile:" + JSON.stringify(res3.data))
-                                // 调用成功
-                                if (res3.data.code === 2000) {
-                                    this.setData({
-                                        userProfile: res3.data.data
-                                    })
-                                }
-                            }
-                        })
-                    }
+        wx.getUserProfile({
+            lang: 'zh_CN',
+            desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+            success: (res) => {
+                console.log(res)
+                request('/auth/decryptUserProfile', {
+                    rawData: res.rawData,
+                    signature: res.signature,
+                    encryptedData: res.encryptedData,
+                    iv: res.iv
+                }, 'GET', r => {
+                    console.log("调用getUserProfile成功:" + JSON.stringify(r))
+                    this.setData({
+                        userProfile: r.data
+                    })
+                }, e => {
+                    console.log("调用getUserProfile失败:" + JSON.stringify(e))
                 })
             }
         })
