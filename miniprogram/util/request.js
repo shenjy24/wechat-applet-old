@@ -13,7 +13,7 @@ export const request = (url = '', data = {}, method = 'GET', callback = null, er
         success: (res2) => {
             console.log("返回结果:" + JSON.stringify(res2.data))
             // 调用成功
-            if (res2.data.code === 2000) {
+            if (res2.data.code === '2000') {
                 if (callback) {
                     callback(res2.data)
                 }
