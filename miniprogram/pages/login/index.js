@@ -14,52 +14,24 @@ Page({
             },
             fail: () => {
                 console.log("session失效")
-                this.requestLogin2session()
+                this.code2session()
             },
         })
     },
 
-    login2session() {
-        wx.login({
-            timeout: 5000,
-            success(res) {
-                if (res.code) {
-                    console.log("code:" + res.code)
-                    wx.request({
-                        url: 'http://localhost:18080/auth/code2session',
-                        data: {
-                            code: res.code
-                        },
-                        success: (r) => {
-                            console.log("login2session:" + JSON.stringify(r.data))
-                            // 调用成功
-                            if (r.data.code === 2000) {
-                                wx.setStorage({
-                                    key: "openid",
-                                    encrypt: true,
-                                    data: r.data.data
-                                })
-                            }
-                        }
-                    });
-                }
-            }
-        })
-    },
-
-    requestLogin2session() {
+    code2session() {
         wx.login({
             timeout: 5000,
             success: (res) => {
                 if (res.code) {
-                    console.log("requestLogin2session code:" + res.code)
+                    console.log("code2session code:" + res.code)
                     request('/auth/code2session', {
                         code: res.code
                     }, 'GET', r => {
-                        console.log("requestLogin2session:" + JSON.stringify(r))
+                        console.log("调用code2session成功:" + JSON.stringify(r))
                         wx.setStorageSync('token', r.data)
                     }, e => {
-                        console.log("requestLogin2session:" + JSON.stringify(e))
+                        console.log("调用code2session失败:" + JSON.stringify(e))
                     })
                 }
             }
