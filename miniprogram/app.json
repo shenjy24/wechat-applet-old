@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/login/index",
+    "entryPagePath": "pages/profile/index",
     "pages": [
         "pages/login/index",
         "pages/profile/index",
@@ -17,15 +17,15 @@
         "selectedColor": "#000000",
         "backgroundColor": "#CCFFFF",
         "list": [{
-            "pagePath": "pages/login/index",
-            "text": "登录流程",
-            "iconPath": "images/login1.png",
-            "selectedIconPath": "images/login2.png"
-        },{
             "pagePath": "pages/profile/index",
             "text": "用户信息",
             "iconPath": "images/user1.png",
             "selectedIconPath": "images/user2.png"
+        }, {
+            "pagePath": "pages/login/index",
+            "text": "登录流程",
+            "iconPath": "images/login1.png",
+            "selectedIconPath": "images/login2.png"
         }]
     },
     "sitemapLocation": "sitemap.json",
