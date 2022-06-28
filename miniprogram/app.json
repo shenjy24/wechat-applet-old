@@ -1,4 +1,5 @@
 {
+    "entryPagePath": "pages/login/index",
     "pages": [
         "pages/login/index",
         "pages/profile/index",
@@ -9,8 +10,23 @@
         "backgroundColor": "#F6F6F6",
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#F6F6F6",
-        "navigationBarTitleText": "云开发 QuickStart",
+        "navigationBarTitleText": "富记",
         "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "selectedColor": "#000000",
+        "backgroundColor": "#CCFFFF",
+        "list": [{
+            "pagePath": "pages/login/index",
+            "text": "登录流程",
+            "iconPath": "images/login1.png",
+            "selectedIconPath": "images/login2.png"
+        },{
+            "pagePath": "pages/profile/index",
+            "text": "用户信息",
+            "iconPath": "images/user1.png",
+            "selectedIconPath": "images/user2.png"
+        }]
     },
     "sitemapLocation": "sitemap.json",
     "style": "v2"
